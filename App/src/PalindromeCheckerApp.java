@@ -1,23 +1,31 @@
-import java.util.Stack;
+import java.util.LinkedList;
+
 public class PalindromeCheckerApp {
-    public static void main(String[]args){
-        // Declare and initialize the input string
-        String input = "noon";
 
-        // Create a Stack to store characters
-        Stack<Character> stack = new Stack<>();
 
-        // Push each character of the string into the stack
+    public static void main(String[] args) {
+
+        // Define the input string
+        String input = "level";
+
+        // Create a LinkedList to store characters
+        LinkedList<Character> list = new LinkedList<>();
+
+        // Add each character to the linked list
         for (char c : input.toCharArray()) {
-            stack.push(c);
+            list.add(c);
         }
 
-        // Assume palindrome initially
+        // Flag to track palindrome state
         boolean isPalindrome = true;
 
-        // Pop characters and compare with original string
-        for (char c : input.toCharArray()) {
-            if (c != stack.pop()) {
+        // Compare until only one or zero elements remain
+        while (list.size() > 1) {
+
+            char first = list.removeFirst();
+            char last = list.removeLast();
+
+            if (first != last) {
                 isPalindrome = false;
                 break;
             }
